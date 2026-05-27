@@ -19,7 +19,7 @@
 
 ## 📌 Project Overview
 
-StockSense AI is a deep learning-based stock price forecasting project that compares multiple recurrent neural network architectures for time-series prediction.
+StockSense AI is a stock forecasting platform that combines deep learning research with an interactive prediction application for stock market analysis.
 
 Using historical Apple (AAPL) stock market data from **January 2020 to January 2024**, this project evaluates LSTM, GRU, BiLSTM, and BiGRU models to identify the most effective forecasting approach.
 
@@ -30,8 +30,8 @@ The project also includes an interactive **Streamlit web application** for real-
 ## 🚀 Features
 
 - Real-time stock market data retrieval using Yahoo Finance
-- Deep learning-based stock forecasting
-- Comparative analysis of LSTM, GRU, BiLSTM, and BiGRU
+- Stock forecasting and predictive analytics
+- Comparative deep learning model analysis (LSTM, GRU, BiLSTM, BiGRU)
 - Interactive Streamlit dashboard
 - Visual stock trend analysis
 - Performance evaluation with RMSE, MAE, MAPE, and R²
@@ -163,6 +163,7 @@ Output Layer (1)
 
 - Python
 - TensorFlow / Keras
+- Scikit-learn
 - Streamlit
 - Pandas
 - NumPy
