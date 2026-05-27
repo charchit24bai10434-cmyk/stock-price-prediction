@@ -45,7 +45,7 @@ The project also includes an interactive **Streamlit web application** for real-
 stock-price-prediction/
 ├── app.py
 ├── requirements.txt
-├── Stock_Price_Prediction_BiLSTM.ipynb
+├── stock_forecasting_experiments.ipynb
 └── README.md
 ```
 
@@ -69,7 +69,7 @@ pip install -r requirements.txt
 ### 3. Run the Notebook
 
 ```bash
-jupyter notebook Stock_Price_Prediction_BiLSTM.ipynb
+jupyter notebook stock_forecasting_experiments.ipynb
 ```
 
 Or open in Google Colab:
