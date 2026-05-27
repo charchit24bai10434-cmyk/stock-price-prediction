@@ -373,7 +373,6 @@ with st.sidebar:
       <div style="font-size:11px;color:#8892a4;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Project Info</div>
       <div style="font-size:12px;color:#e2e8f0;line-height:1.6;">
         BiLSTM • GRU • LSTM • BiGRU<br>
-        <span style="color:#8892a4;">VIT Bhopal | Group 142</span><br>
         <span style="color:#63b3ed;">96.13% accuracy</span>
       </div>
     </div>
