@@ -2,12 +2,10 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import matplotlib.pyplot as plt
-import matplotlib.patches as mpatches
 import yfinance as yf
 from sklearn.preprocessing import MinMaxScaler
 from sklearn.ensemble import GradientBoostingRegressor
 from sklearn.metrics import mean_squared_error, mean_absolute_error, r2_score
-from datetime import datetime, timedelta
 import warnings
 warnings.filterwarnings('ignore')
 
@@ -213,7 +211,7 @@ MODEL_RESULTS = {
     "BiGRU":  {"Accuracy": 95.65, "RMSE": 5.95, "MAE": 4.65, "R2": 0.9187},
 }
 
-FAKE_NEWS = {
+SAMPLE_NEWS = {
     "AAPL": [
         ("Apple reports record iPhone sales in Q4, beating analyst estimates by 12%", "positive", "2h ago"),
         ("Apple Vision Pro sees slower-than-expected enterprise adoption", "negative", "5h ago"),
@@ -249,7 +247,7 @@ DEFAULT_NEWS = [
 
 def get_news(ticker):
     base = ticker.split('.')[0]
-    return FAKE_NEWS.get(base, DEFAULT_NEWS)
+    return SAMPLE_NEWS.get(base, DEFAULT_NEWS)
 
 @st.cache_data(ttl=300)
 def load_stock(ticker, period="1y"):
@@ -259,7 +257,7 @@ def load_stock(ticker, period="1y"):
         if isinstance(df.columns, pd.MultiIndex):
             df.columns = [c[0] if c[1] == '' else c[0] for c in df.columns]
         return df
-    except:
+    except Exception:
         return pd.DataFrame()
 
 def compute_indicators(df):
@@ -373,17 +371,17 @@ with st.sidebar:
       <div style="font-size:11px;color:#8892a4;text-transform:uppercase;letter-spacing:1px;margin-bottom:8px;">Project Info</div>
       <div style="font-size:12px;color:#e2e8f0;line-height:1.6;">
         BiLSTM • GRU • LSTM • BiGRU<br>
-        <span style="color:#63b3ed;">96.13% accuracy</span>
+        <span style="color:#63b3ed;">Best benchmark: R² = 0.929</span>
       </div>
     </div>
     """, unsafe_allow_html=True)
 
 # ── Hero ──────────────────────────────────────────────────────────────────────
-st.markdown(f"""
+st.markdown("""
 <div class="hero">
-  <div class="hero-badge">🤖 AI-Powered · Real-Time</div>
+  <div class="hero-badge">🤖 AI-Powered · Live Market Data</div>
   <h1>Market Intelligence<br><span>Dashboard</span></h1>
-  <p>BiLSTM deep learning · Technical analysis · Sentiment scoring · Buy/Sell signals</p>
+  <p>Machine learning forecasting · Technical analysis · Sentiment scoring · Buy/Sell signals</p>
 </div>
 """, unsafe_allow_html=True)
 
@@ -546,7 +544,7 @@ with col_pred:
     fig2.patch.set_facecolor('#050810')
     ax.set_facecolor('#0d1526')
     ax.plot(actual, color='#63b3ed', linewidth=1.5, label='Actual')
-    ax.plot(preds,  color='#f6ad55', linewidth=1.5, label='BiLSTM Pred', linestyle='--')
+    ax.plot(preds,  color='#f6ad55', linewidth=1.5, label='ML Prediction', linestyle='--')
     ax.fill_between(range(len(actual)), actual, preds, alpha=0.1, color='#63b3ed')
     ax.set_title(f'Prediction Accuracy — R²: {r2:.4f}', fontsize=11, color='#f0f4ff')
     ax.legend(fontsize=9, framealpha=0.2, labelcolor='white', facecolor='#0d1526')
@@ -626,7 +624,7 @@ with col_port:
                 <div class="{pnl_cls}">{arr} {abs(wchg):.2f}%</div>
               </div>
             </div>""", unsafe_allow_html=True)
-        except: continue
+        except Exception: continue
 
 # ── Model Metrics Summary ─────────────────────────────────────────────────────
 st.markdown('<div class="section-title"><span></span>Live Model Performance Metrics</div>', unsafe_allow_html=True)
@@ -647,6 +645,6 @@ for col, label, val, cls in zip(
 
 st.markdown("""
 <div style="text-align:center;margin-top:2rem;padding:1rem;color:#4a5568;font-size:12px;">
-  StockSense AI · VIT Bhopal University · Group 142 · BiLSTM Deep Learning Research<br>
-  <span style="color:#2d3748;">For educational purposes only · Not financial advice</span>
+  StockSense AI · AI-Powered Stock Analysis Dashboard<br>
+  <span style="color:#2d3748;">Portfolio demonstration project · Not financial advice</span>
 </div>""", unsafe_allow_html=True)
