@@ -1,8 +1,6 @@
-# 📈 Stock Price Prediction Using Deep Learning
+# 📊 StockSense AI — Deep Learning Stock Forecasting
 
-> **A Comparative Analysis of LSTM, GRU, BiLSTM, and BiGRU Models**
->
-> VIT Bhopal University | School of Computing Science & Engineering | Group 142
+> Interactive stock market forecasting using deep learning and real-time financial data.
 
 ---
 
@@ -15,34 +13,39 @@
 | **BiLSTM** | **96.13%** | **5.25** | **3.95** | **0.9290** |
 | BiGRU  | 95.65%   | 5.95 | 4.65 | —        |
 
-🥇 **Winner: BiLSTM** — Highest accuracy, lowest errors, most reliable predictions.
+🥇 **Best Performing Model: BiLSTM**
 
 ---
 
 ## 📌 Project Overview
 
-This project develops and compares four deep learning models for stock price forecasting using historical market data. Using Apple (AAPL) stock data from **January 2020 to January 2024**, we demonstrate that Bidirectional LSTM (BiLSTM) outperforms other RNN variants by capturing both forward and backward temporal dependencies.
+StockSense AI is a deep learning-based stock price forecasting project that compares multiple recurrent neural network architectures for time-series prediction.
 
-### Objectives
-- Develop deep learning models for stock price prediction
-- Compare LSTM, GRU, BiLSTM, and BiGRU architectures
-- Identify the best model for financial time-series forecasting
+Using historical Apple (AAPL) stock market data from **January 2020 to January 2024**, this project evaluates LSTM, GRU, BiLSTM, and BiGRU models to identify the most effective forecasting approach.
+
+The project also includes an interactive **Streamlit web application** for real-time stock analysis and visualization.
+
+---
+
+## 🚀 Features
+
+- Real-time stock market data retrieval using Yahoo Finance
+- Deep learning-based stock forecasting
+- Comparative analysis of LSTM, GRU, BiLSTM, and BiGRU
+- Interactive Streamlit dashboard
+- Visual stock trend analysis
+- Performance evaluation with RMSE, MAE, MAPE, and R²
+- Time-series preprocessing with sliding window sequence generation
 
 ---
 
 ## 🗂️ Repository Structure
 
-```
+```bash
 stock-price-prediction/
-├── app/
-│   └── app.py                  # Streamlit interactive web app
-├── notebooks/
-│   └── Stock_Price_Prediction_BiLSTM.ipynb   # Full Jupyter notebook
-├── src/
-│   └── (utility scripts)
-├── results/
-│   └── (generated charts & plots)
+├── app.py
 ├── requirements.txt
+├── Stock_Price_Prediction_BiLSTM.ipynb
 └── README.md
 ```
 
@@ -50,30 +53,32 @@ stock-price-prediction/
 
 ## 🚀 Getting Started
 
-### 1. Clone the Repository
+### 1. Clone Repository
+
 ```bash
-git clone https://github.com/YOUR_USERNAME/stock-price-prediction.git
+git clone https://github.com/charchit24bai10434-cmyk/stock-price-prediction.git
 cd stock-price-prediction
 ```
 
 ### 2. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
-### 3. Run the Jupyter Notebook
+### 3. Run the Notebook
+
 ```bash
-cd notebooks
 jupyter notebook Stock_Price_Prediction_BiLSTM.ipynb
 ```
 
-Or open directly in **Google Colab**:
+Or open in Google Colab:
 
-[![Open in Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/drive/1d46qzqQl9ddH0FlR95PsrqWE1O5FJ87Z)
+[Open in Colab](https://colab.research.google.com/drive/1d46qzqQl9ddH0FlR95PsrqWE1O5FJ87Z)
 
-### 4. Launch the Web App
+### 4. Launch Interactive App
+
 ```bash
-cd app
 streamlit run app.py
 ```
 
@@ -81,102 +86,92 @@ streamlit run app.py
 
 ## 🧠 Methodology
 
-```
-Data Acquisition (yfinance)
+```text
+Data Acquisition (Yahoo Finance)
         ↓
 Data Preprocessing
   • Close price extraction
-  • MinMax normalization [0,1]
-  • 60-day sliding window sequences
-  • 80/20 train-test split
+  • MinMax normalization
+  • 60-day sequence generation
+  • Train-test split
         ↓
-Model Building (TensorFlow/Keras)
-  • LSTM  →  GRU  →  BiLSTM  →  BiGRU
+Model Development
+  • LSTM
+  • GRU
+  • BiLSTM
+  • BiGRU
         ↓
 Training
-  • Adam optimizer (lr=0.0001)
-  • Batch size: 32 | Epochs: 50
-  • EarlyStopping + ReduceLROnPlateau
+  • Adam optimizer
+  • EarlyStopping
+  • ReduceLROnPlateau
         ↓
 Evaluation
-  • RMSE, MAE, MAPE, R², Accuracy
-  • Error distribution analysis
-  • Actual vs Predicted plots
+  • RMSE
+  • MAE
+  • MAPE
+  • R² Score
+        ↓
+Deployment
+  • Streamlit interactive dashboard
 ```
 
 ---
 
-## 📊 Model Architecture (BiLSTM — Best Model)
+## 📊 Best Model Architecture (BiLSTM)
 
-```
-Input (60 days × 1 feature)
-    ↓
-Bidirectional LSTM (128 units) → captures forward & backward patterns
-    ↓
+```text
+Input Sequence (60 timesteps)
+        ↓
+Bidirectional LSTM (128 units)
+        ↓
 Dropout (0.3)
-    ↓
+        ↓
 Bidirectional LSTM (64 units)
-    ↓
+        ↓
 Dropout (0.2)
-    ↓
-Dense (32, ReLU)
-    ↓
-Dense (1) — predicted next-day price
+        ↓
+Dense Layer (32, ReLU)
+        ↓
+Output Layer (1)
 ```
 
 ---
 
 ## 📈 Key Results
 
-- **BiLSTM R² Score: 0.9290** — the model explains 92.9% of price variance
-- **MAPE: 3.87%** — predictions within ~4% of actual price on average
-- **Stationary errors** — consistent performance throughout the test period
-- **Near-zero error bias** — normally distributed prediction errors
+- **BiLSTM achieved highest performance**
+- **R² Score: 0.9290**
+- **MAPE: 3.87%**
+- Consistent prediction performance across testing period
+- Stable forecasting with low prediction error
 
 ---
 
-## 🔮 Future Work
+## 🔮 Future Improvements
 
-- [ ] Add technical indicators (RSI, MACD, Bollinger Bands)
-- [ ] Incorporate sentiment analysis from news/social media
-- [ ] Experiment with Attention mechanisms and Transformers
-- [ ] Deploy as a real-time prediction API
-- [ ] Extend to multi-stock and multi-day forecasting
-- [ ] Apply SHAP/LIME for model explainability
-
----
-
-## 👥 Team
-
-| Name | Registration No. |
-|------|-----------------|
-| Mohit Kumar Mishra | 24BAI10174 |
-| Charchit Bari | 24BAI10434 |
-| Anshika Kumari | 24BAI10333 |
-| Siddhi Sibangi Kar | 24BAI10280 |
-| Anushka Thakur | 24BAI10438 |
-| Vishal Dubey | 24BAI10041 |
-
-**Supervisor:** Dr. Anil Kumar Yadav  
-**Reviewers:** Dr. Jyoti Chauhan | Dr. Komarasamy G  
-**Institution:** VIT Bhopal University, Kothrikalan, Sehore, MP
+- Add technical indicators (RSI, MACD, Bollinger Bands)
+- Multi-stock forecasting support
+- Multi-day forecasting
+- Transformer-based forecasting models
+- Sentiment analysis integration
+- Explainable AI using SHAP/LIME
 
 ---
 
-## 📚 References
+## 🛠️ Tech Stack
 
-1. Hochreiter, S. & Schmidhuber, J. (1997). *Long Short-Term Memory*. Neural Computation, 9(8), 1735–1780.
-2. Graves, A. (2013). *Generating Sequences with Recurrent Neural Networks*. arXiv:1308.0850.
-3. Cho, K. et al. (2014). *Learning Phrase Representations using RNN Encoder-Decoder*. arXiv:1406.1078.
-4. Kaggle Stock Market Dataset — historical price data.
-5. TensorFlow/Keras documentation — [keras.io](https://keras.io)
+- Python
+- TensorFlow / Keras
+- Streamlit
+- Pandas
+- NumPy
+- Scikit-learn
+- Matplotlib
+- yfinance
 
 ---
 
 ## 📄 License
 
-This project is for academic purposes at VIT Bhopal University.
-
----
-
-<p align="center">Made with ❤️ by Group 142 | VIT Bhopal</p>
+Open for educational and portfolio demonstration purposes.
